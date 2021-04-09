@@ -9,18 +9,15 @@ import model.Minimarket;
 public class Main {
 
 	private Minimarket minimarket;
-	private int numRejected;
 	
 	public Main() {
 		minimarket = new Minimarket();
-		numRejected = 0;
 	}
 	
 	public static void main(String[] args) {
 		
 		Main app = new Main();
 		System.out.println("Binvenido al minimarket Mi Barrio Te Quiere");
-		
 		int option;
 		do {
 			option = app.showMenu();
@@ -28,8 +25,7 @@ public class Main {
 			
 		}while(option != 3);
 	}
-	
-	
+
 	public int showMenu() {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
