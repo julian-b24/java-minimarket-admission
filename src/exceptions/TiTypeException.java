@@ -4,15 +4,15 @@ import model.IdType;
 
 public class TiTypeException extends Exception{
 
-	private IdType type;
+	private String id;
 	
-	public TiTypeException() {
+	public TiTypeException(String id_) {
 		super("Se intentó ingresar una persona con Tarjeta de Identidad.");
-		type = IdType.TI;
+		id = id_;
 	}
 
-	public IdType getType() {
-		return type;
+	public String getId() {
+		return id;
 	}
 
 }
