@@ -34,7 +34,7 @@ class MinimarketTest {
 	}
 	
 	@Test
-	public void testAdmissionEvenDay1() {
+	public void testAdmissionEvenDayAdmitted() {
 		
 		try {
 			setupScenary1();
@@ -66,7 +66,7 @@ class MinimarketTest {
 	}
 	
 	@Test
-	public void testAdmissionOddDay1() {
+	public void testAdmissionOddDayAdmitted() {
 		
 		try {
 			setupScenary2();
@@ -113,7 +113,7 @@ class MinimarketTest {
 			assertEquals(1, market.getNumAttemps());
 		}
 		
-		setupScenary1();
+		setupScenary2();
 		String id2 = "20173030";
 		String type2 = "TI";
 		try {
@@ -128,6 +128,99 @@ class MinimarketTest {
 		
 	}
 	
+	@Test
+	public void testAdmissionEvenDayRejected() {
+		
+		setupScenary1();
+		String id1 = "5657666";
+		String type1 = "CC";
+		try {
+			market.addmission(id1, type1);
+			fail("Person not Rejected");
+		} catch (NotMatchIdDateException dateExcp) {
+			assertEquals(id1, dateExcp.getId());
+			assertEquals(1, market.getNumAttemps());
+			
+		} catch (TiTypeException tiExcp) {
+			fail("Person Rejected by the wrong reason");
+		}
+		
+		
+		setupScenary1();
+		String id2 = "45783844";
+		String type2 = "PP";
+		try {
+			market.addmission(id2, type2);
+			fail("Person not Rejected");
+		} catch (NotMatchIdDateException dateExcp) {
+			assertEquals(id2, dateExcp.getId());
+			assertEquals(1, market.getNumAttemps());
+			
+		} catch (TiTypeException tiExcp) {
+			fail("Person Rejected by the wrong reason");
+		}
+		
+		setupScenary1();
+		String id3 = "67676381";
+		String type3 = "CE";
+		try {
+			market.addmission(id3, type3);
+			fail("Person not Rejected");
+		} catch (NotMatchIdDateException dateExcp) {
+			assertEquals(id3, dateExcp.getId());
+			assertEquals(1, market.getNumAttemps());
+			
+		} catch (TiTypeException tiExcp) {
+			fail("Person Rejected by the wrong reason");
+		}
+		
+	}
 	
+	public void testAdmissionOddDayRejected() {
+		
+		setupScenary2();
+		String id1 = "7878998";
+		String type1 = "CC";
+		try {
+			market.addmission(id1, type1);
+			fail("Person not Rejected");
+		} catch (NotMatchIdDateException dateExcp) {
+			assertEquals(id1, dateExcp.getId());
+			assertEquals(1, market.getNumAttemps());
+			
+		} catch (TiTypeException tiExcp) {
+			fail("Person Rejected by the wrong reason");
+		}
+		
+		
+		setupScenary2();
+		String id2 = "4564572";
+		String type2 = "PP";
+		try {
+			market.addmission(id2, type2);
+			fail("Person not Rejected");
+		} catch (NotMatchIdDateException dateExcp) {
+			assertEquals(id2, dateExcp.getId());
+			assertEquals(1, market.getNumAttemps());
+			
+		} catch (TiTypeException tiExcp) {
+			fail("Person Rejected by the wrong reason");
+		}
+		
+		setupScenary2();
+		String id3 = "62347833";
+		String type3 = "CE";
+		try {
+			market.addmission(id3, type3);
+			fail("Person not Rejected");
+		} catch (NotMatchIdDateException dateExcp) {
+			assertEquals(id3, dateExcp.getId());
+			assertEquals(1, market.getNumAttemps());
+			
+		} catch (TiTypeException tiExcp) {
+			fail("Person Rejected by the wrong reason");
+		}
+		
+	}
 
 }

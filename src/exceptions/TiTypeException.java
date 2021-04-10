@@ -1,7 +1,5 @@
 package exceptions;
 
-import model.IdType;
-
 public class TiTypeException extends Exception{
 
 	private String id;

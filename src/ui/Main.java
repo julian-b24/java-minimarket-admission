@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
 
+import exceptions.NotMatchIdDateException;
+import exceptions.TiTypeException;
 import model.Minimarket;
 
 public class Main {
@@ -15,7 +17,7 @@ public class Main {
 		minimarket = new Minimarket(LocalDate.now());
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		Main app = new Main();
 		
@@ -28,20 +30,19 @@ public class Main {
 		}while(option != 3);
 	}
 
-	public int showMenu() {
+	public int showMenu() throws IOException {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int option = 0;
-		
-		System.out.println();
+
 		try {
 			System.out.println( "¿Qué desea hacer? \n" +
 								"[1] Registrar Ingreso nueva persona \n" +
 								"[2] Número de personas que han intentado ingresar al minimarket \n" + 
 								"[3] Salir del programa \n");
 			option = Integer.parseInt(br.readLine());
-		} catch (NumberFormatException | IOException  e) {
-			option = 0;
+		} catch (NumberFormatException  e) {
+			e.printStackTrace();
 		}
 		
 		return option;
@@ -51,9 +52,11 @@ public class Main {
 		
 		switch (option) {
 		case 1:
+			registerPerson();
 			break;
 
 		case 2:
+			getNumAttemps();
 			break;
 		
 		case 3:
@@ -64,6 +67,34 @@ public class Main {
 			System.out.println("Ha ingresado una opción inválida!");
 			break;
 		}
+	}
+
+	public void registerPerson() {
+		
+		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			System.out.println("Ingrese el número de identificación: ");
+			String id = br.readLine();
+			System.out.println("Ingrese el tipo de identifiación: ");
+			System.out.println();
+			String type = br.readLine();
+			
+			if (minimarket.addmission(id, type)) {
+				System.out.println("La persona con " + type + " y id: " + id + ". Ha ingresado al minimarket \n");
+			}
+			
+			br.close();
+		} catch (IOException ioeExcp) {
+			ioeExcp.printStackTrace();
+		} catch (NotMatchIdDateException dateExcp) {
+			dateExcp.printStackTrace();
+		} catch (TiTypeException tiExcp) {
+			tiExcp.printStackTrace();
+		}
+	}
+
+	public void getNumAttemps() {
+		System.out.println("\nEl número de personas que ha intentado ingresar es: " + minimarket.getNumAttemps() + "\n");
 	}
 
 }
