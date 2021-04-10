@@ -3,6 +3,7 @@ package ui;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
 
 import model.Minimarket;
 
@@ -11,7 +12,7 @@ public class Main {
 	private Minimarket minimarket;
 	
 	public Main() {
-		minimarket = new Minimarket();
+		minimarket = new Minimarket(LocalDate.now());
 	}
 	
 	public static void main(String[] args) {

@@ -9,10 +9,10 @@ public class Minimarket {
 	private int numAttemps;			//Amount of persons that try go into the minimarket
 	private LocalDate date;
 	
-	public Minimarket() {
+	public Minimarket(LocalDate dat) {
 		persons = new ArrayList<Person>();
 		numAttemps = 0;
-		date = LocalDate.now();
+		date = dat;
 	}
 
 	public LocalDate getDate() {
@@ -26,5 +26,10 @@ public class Minimarket {
 	public ArrayList<Person> getPersons() {
 		return persons;
 	}
+	
+	public void setNumAttemps(int attemp) {
+		numAttemps = attemp;
+	}
+
 
 }
