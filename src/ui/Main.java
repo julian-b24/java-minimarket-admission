@@ -87,9 +87,9 @@ public class Main {
 		} catch (IOException ioeExcp) {
 			ioeExcp.printStackTrace();
 		} catch (NotMatchIdDateException dateExcp) {
-			dateExcp.printStackTrace();
+			System.out.println(dateExcp.toString() + "\n Proceso terminado");
 		} catch (TiTypeException tiExcp) {
-			tiExcp.printStackTrace();
+			System.out.println(tiExcp.toString() + "\n Proceso terminado");
 		}
 	}
 
